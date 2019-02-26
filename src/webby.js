@@ -1,6 +1,7 @@
 // webby.js
 const net = require('net');
 const path = require('path');
+const fs = require('fs');
 
 const HTTP_STATUS_CODES = {
     200: 'OK',
@@ -145,11 +146,14 @@ function serveStatic(basePath) {
         fs.readFile(completePath, (err, data) => {
             // if no file at given path, call next
             if(err) {
-
+                next(req, res);
+            // success!
             } else {
-
+                res.status(200);
+                res.set('Content-Type', `${getMIMEType(basePath)}`);
+                res.send(data);
             }
-        })
+        });
     };
 }
 
