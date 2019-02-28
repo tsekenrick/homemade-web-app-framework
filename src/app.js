@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
             <h1>Horseshoe Crabs!</h1>
             <h2>That's right, bet you didn't see that coming ^^</h2>
             <img src="img/animal4.jpg" class="round">
-            <a href="/gallery"><br>...wait but why though???</a>
+            <h2><a href="/gallery"><br>...wait but why though???</a></h2>
         </body>
     </html>`);
 });

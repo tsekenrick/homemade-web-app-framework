@@ -12,12 +12,8 @@ h2 {
     text-align: center;
 }
 
-a:link {
+a:visited {
     color: goldenrod;
-    font-size: 150%;
-    display: block;
-    position: absolute;
-    left: 37%;
 }
 
 img {
