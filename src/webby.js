@@ -116,7 +116,7 @@ class App {
     }
 
     handleConnection(sock) {
-        sock.on('data', this.handleRequest.bind(this, sock)); // one arg?
+        sock.on('data', this.handleRequest.bind(this, sock));
     }
 
     handleRequest(sock, binaryData) {

@@ -6,6 +6,7 @@ const app = new webby.App();
 
 app.use(webby.static(publicPath));
 
+// landing page
 app.get('/', (req, res) => {
     res.send(`<!DOCTYPE html>
         <head>
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
     </html>`);
 });
 
+// dynamic image embed
 app.get('/gallery', (req, res) => {
     const randomInt = (min, max) => {
         min = Math.ceil(min);
@@ -47,6 +49,7 @@ app.get('/gallery', (req, res) => {
     </html>`);
 });
 
+// redirects
 app.get('/pics', (req, res) => {
     res.status(301);
     res.set('Location', '/gallery');
