@@ -5,6 +5,7 @@ const fs = require('fs');
 
 const HTTP_STATUS_CODES = {
     200: 'OK',
+    301: 'Moved Permanently',
     404: 'Not Found',
     500: 'Internal Server Error'
 };
@@ -64,7 +65,7 @@ class Response {
     send(body) {
         this.sock.write(this.statusLineToString());
         this.sock.write(this.headersToString());
-        if(this.headers.hasOwnProperty('Content-Type')) {
+        if(!this.headers.hasOwnProperty('Content-Type')) {
             this.sock.write('Content-Type: text/html\r\n');
         }
         this.sock.write('\r\n');
