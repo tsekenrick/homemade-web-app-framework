@@ -122,7 +122,7 @@ class App {
         const req = new Request(binaryData + '');
         const res = new Response(sock);
         if(this.middleware !== null) {
-            this.middleware(req, res, this.processRoutes.bind(this)); // check for correctness
+            this.middleware(req, res, this.processRoutes.bind(this, req, res));
         } else {
             this.processRoutes(req, res);
         }
@@ -130,14 +130,13 @@ class App {
 
     processRoutes(req, res) {
         const key = [this.createRouteKey(req.method, req.path)];
-        if(this.routes.hasOwnProperty(`${key}`)) {
+        if(this.routes.hasOwnProperty(key)) {
             this.routes[key](req, res);
         } else {
             const newRes = new Response(res.sock, 404);
             newRes.send('Page not found.');
         }
     }
-    
 }
 
 function serveStatic(basePath) {
